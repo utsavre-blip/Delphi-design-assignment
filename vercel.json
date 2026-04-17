@@ -1,6 +1,6 @@
 {
-  "installCommand": "npm install --prefix delphi-chat",
-  "buildCommand": "npm run build --prefix delphi-chat",
+  "installCommand": "npm --prefix delphi-chat install",
+  "buildCommand": "npm --prefix delphi-chat run build",
   "outputDirectory": "delphi-chat/.next",
   "framework": "nextjs"
 }
