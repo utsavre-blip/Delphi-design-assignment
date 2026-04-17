@@ -1,0 +1,10 @@
+{
+  "name": "delphi-root",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix delphi-chat run dev",
+    "build": "npm --prefix delphi-chat run build",
+    "start": "npm --prefix delphi-chat run start",
+    "lint": "npm --prefix delphi-chat run lint"
+  }
+}

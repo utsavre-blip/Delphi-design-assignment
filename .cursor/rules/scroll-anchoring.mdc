@@ -1,0 +1,32 @@
+---
+description: Prevent scroll jumping when dynamic content (panels, embeds, images) changes height inside a scrollable container
+globs: **/*.tsx
+alwaysApply: false
+---
+
+# Scroll Anchoring
+
+The browser's native scroll anchoring automatically adjusts `scrollTop` when content above the viewport changes height. In dynamic UIs (chat, citation panels, lazy-loaded embeds), this causes the page to jump unexpectedly when content is added, removed, or resizes.
+
+**Fix:** disable scroll anchoring on the scrollable container and its inner content wrapper.
+
+```tsx
+// ✅ GOOD — stable scroll position when child content changes height
+<main
+  className="flex-1 overflow-y-auto"
+  style={{ overflowAnchor: "none" }}
+>
+  <div style={{ overflowAnchor: "none" }}>
+    {/* dynamic content: panels, embeds, images */}
+  </div>
+</main>
+
+// ❌ BAD — scroll jumps when citation panel opens/closes or embed images load
+<main className="flex-1 overflow-y-auto">
+  <div>
+    {/* dynamic content */}
+  </div>
+</main>
+```
+
+Apply `overflowAnchor: "none"` to both the scroll container **and** the direct inner wrapper — browsers can re-enable anchoring on children by default.
